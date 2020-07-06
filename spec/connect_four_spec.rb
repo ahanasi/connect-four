@@ -76,4 +76,14 @@ describe Grid do
     end
 
   end
+
+  describe "#column_not_full" do
+    it "returns true if the column has not been filled in all rows" do
+      test = Grid.new()
+      test.grid.each_with_index do |row,i|
+        test.grid[i][0] = "🔴"
+      end
+      expect(test.column_not_full(1)).to be false
+    end
+  end
 end
