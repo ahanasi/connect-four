@@ -11,13 +11,11 @@ class Grid
   end
 
   def display_grid()
-    print "\t"
+    puts ("\n")
     print COLS.join("\t")
     puts
     @grid.each_with_index do |row, i|
       puts ("\n")
-      print ROWS[i]
-      print "\t"
       print row.join("\t")
       puts
     end
@@ -46,8 +44,6 @@ class Grid
     return false
   end
 
-  private
-
   def is_occupied?(position)
     MARKERS.any? { |marker| @grid[position[0]][position[1]] == marker }
   end
@@ -73,5 +69,9 @@ class Grid
     rotated = []
     arr.transpose.each { |row| rotated << row.reverse }
     return rotated
+  end
+
+  def column_not_full(col)
+    @grid.map.with_index {|row, i| @grid[i][col-1] }.any? {|item| item == "."}
   end
 end
