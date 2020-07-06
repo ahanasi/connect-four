@@ -65,5 +65,15 @@ describe Grid do
       expect(test.victory_condition).to be true
     end
 
+    it "returns true if anti-diagonal 4-in-a-row" do
+      test = Grid.new()
+      i = 0; j = 6; count = 4
+      until count == 0
+        test.grid[i][j] = "🔴"
+        i += 1; j -= 1; count -= 1;
+      end
+      expect(test.victory_condition).to be true
+    end
+
   end
 end
